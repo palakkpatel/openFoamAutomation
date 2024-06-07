@@ -59,3 +59,20 @@ def update_momentumTransport(model, turbulence="on", viscosityModel="Newtonian")
         f.write(template.safe_substitute(model = model, turbulence = turbulence, viscosityModel = viscosityModel))
 
         print(f"Updated Momentum Transport Parameters")
+
+def update_physicalProperties(nu, viscosityModel="constant"):
+    """
+    Update the physical properties settings in the simulation directory.
+        
+    This function updates the 'physicalProperties' file in the 'constant/' folder.
+    """
+    
+    field_file = os.path.join(SIM_DIR, "constant", "physicalProperties")
+
+    with open(field_file) as f:
+        template = Template(f.read())
+
+    with open(field_file, "w") as f:
+        f.write(template.safe_substitute(nu = nu, viscosityModel = viscosityModel))
+
+        print(f"Updated Physical Properties Parameters")
