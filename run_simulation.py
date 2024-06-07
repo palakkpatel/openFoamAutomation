@@ -42,3 +42,20 @@ def update_initial_boundary_values(field, value, inlet_value = None):
             f.write(template.safe_substitute(internal_field_value = value))
         print(f"Updated {field} Value")
 
+def update_momentumTransport(model, turbulence="on", viscosityModel="Newtonian"):
+    """
+    Update the momentum transport model settings in the simulation directory.
+        
+    This function updates the 'momentumTransport' file in the 'constant/' folder by substituting the
+    model, turbulence, and viscosity settings.
+    """
+    
+    field_file = os.path.join(SIM_DIR, "constant", "momentumTransport")
+
+    with open(field_file) as f:
+        template = Template(f.read())
+
+    with open(field_file, "w") as f:
+        f.write(template.safe_substitute(model = model, turbulence = turbulence, viscosityModel = viscosityModel))
+
+        print(f"Updated Momentum Transport Parameters")
