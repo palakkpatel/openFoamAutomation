@@ -76,3 +76,14 @@ def update_physicalProperties(nu, viscosityModel="constant"):
         f.write(template.safe_substitute(nu = nu, viscosityModel = viscosityModel))
 
         print(f"Updated Physical Properties Parameters")
+
+def update_controlDict(endTime, deltaT=1, writeInterval=100):
+    field_file = os.path.join(SIM_DIR, "system", "controlDict")
+
+    with open(field_file) as f:
+        template = Template(f.read())
+
+    with open(field_file, "w") as f:
+        f.write(template.safe_substitute(endTime = endTime, deltaT = deltaT, writeInterval=writeInterval))
+
+        print(f"Updated Control Parameters of the Simulation")
