@@ -3,6 +3,8 @@
 ## Overview
 This project automates the setup and execution of a Backward Facing Step simulation using OpenFOAM. The simulation setup, boundary conditions, and physical properties are configured using a Python script, while a Bash script is provided to automate the entire simulation workflow, including mesh generation, running the simulation, and generating visualizations.
 
+This project not only automates the setup and execution of a Backward Facing Step simulation using OpenFOAM but also lays the foundation for conducting ensemble simulations and uncertainty quantification (UQ) studies. The ability to systematically modify simulation parameters via Python scripts enables researchers to explore the parameter space efficiently, making this approach particularly useful for computational studies requiring high-throughput simulations.
+
 **Author:** Palak Patel
 
 ### Key Components:
